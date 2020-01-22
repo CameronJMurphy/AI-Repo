@@ -40,28 +40,6 @@ int main()
 
 	//set up edges
 
-	/*Pathfinding::Edge* edge1 = new Pathfinding::Edge(node2,10);
-	Pathfinding::Edge* edge2 = new Pathfinding::Edge(node3,10);
-	Pathfinding::Edge* edge3 = new Pathfinding::Edge(node3,1);
-	Pathfinding::Edge* edge4 = new Pathfinding::Edge(node4,1);
-	Pathfinding::Edge* edge5 = new Pathfinding::Edge(node5,1);*/
-
-	/*Pathfinding::Edge edge1;
-	edge1.target = node2;
-	edge1.cost = 10;
-	Pathfinding::Edge edge2;
-	edge2.target = node3;
-	edge2.cost = 10;
-	Pathfinding::Edge edge3;
-	edge3.target = node3;
-	edge3.cost = 1;
-	Pathfinding::Edge edge4;
-	edge4.target = node4;
-	edge4.cost = 1;
-	Pathfinding::Edge edge5;
-	edge5.target = node5;
-	edge5.cost = 1;*/
-
 	Edge edge1;
 	edge1.target = node2;
 	edge1.cost = 10;
@@ -91,7 +69,7 @@ int main()
 	nodes.push_back(node4);
 	nodes.push_back(node5);
 
-	dijkstrasSearch(node1, node4);
+	dijkstrasSearch(node1, node3);
 
 	//clean up
 	for (auto node : nodes)

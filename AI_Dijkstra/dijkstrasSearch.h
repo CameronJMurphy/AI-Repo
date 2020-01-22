@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include<list>
+#include <math.h>
 
 struct Vector2
 {
@@ -10,6 +11,10 @@ struct Vector2
     Vector2(float X, float Y) : x(X), y(Y) {}
     float x;
     float y;
+    float Magnitude()
+    {
+        return sqrt(x * x + y * y);
+    }
 };
 
 struct Edge;
@@ -24,12 +29,14 @@ namespace Pathfinding
         // User defined data attached to each node.
         Vector2 position;
         float gScore;
+        float hScore;
+        float fScore;
         Node* parent;
         std::vector< Edge > connections;
 
         bool operator <(Node* node)
         {
-            if (node->gScore > gScore)
+            if (node->fScore > fScore)
             {
                 return true;
             }
@@ -45,6 +52,13 @@ struct Edge
     float cost;
 };
 
+float Heuristic(Pathfinding::Node* _target, Pathfinding::Node* _endNode)
+{
+    Vector2 heuristic(_endNode->position.x - _target->position.x, _endNode->position.y - _target->position.y);
+     
+    return heuristic.Magnitude();
+    
+}
 
 std::list<Pathfinding::Node*> dijkstrasSearch(Pathfinding::Node* startNode, Pathfinding::Node* endNode)
 {
@@ -52,13 +66,13 @@ std::list<Pathfinding::Node*> dijkstrasSearch(Pathfinding::Node* startNode, Path
     // Validate the input
     if (startNode == NULL || endNode == NULL)
     {
-        std::cout << "Error";
+        std::cout << "ERROR: NULL INPUTS";
         std::runtime_error;
     }
 
     if (startNode == endNode)
     {
-        std::cout << "Error";
+        std::cout << "ERROR: LIST HAS LENGTH OF ONE";
         std::runtime_error;
     }
 
@@ -76,7 +90,7 @@ std::list<Pathfinding::Node*> dijkstrasSearch(Pathfinding::Node* startNode, Path
 
     while (openList.size() != 0)
     {
-        openList.sort();
+        openList.sort(); //sort by fScore
 
         currentNode = openList.front();
         // If we visit the endNode, then we can exit early.
@@ -90,7 +104,9 @@ std::list<Pathfinding::Node*> dijkstrasSearch(Pathfinding::Node* startNode, Path
         openList.remove(currentNode);
         closedList.push_back(currentNode);
 
-        int gScore = 0;
+        float gScore = 0;
+        float hScore = 0;
+        float fScore = 0;
         bool nodeFoundCL = false; //CL stands for closed list
         bool nodeFoundOL = false; //OL stands for openList
         for (Edge c : currentNode->connections)
@@ -105,7 +121,8 @@ std::list<Pathfinding::Node*> dijkstrasSearch(Pathfinding::Node* startNode, Path
             if (!nodeFoundCL)
             {
                 gScore = currentNode->gScore + c.cost;
-
+                hScore = Heuristic(c.target, endNode);
+                fScore = gScore + hScore;
                 // Have not yet visited the node.
                 // So calculate the Score and update its parent.
                 // Also add it to the openList for processing.
@@ -119,15 +136,17 @@ std::list<Pathfinding::Node*> dijkstrasSearch(Pathfinding::Node* startNode, Path
                 if (!nodeFoundOL)
                 {
                     c.target->gScore = gScore;
+                    c.target->fScore = fScore;
                     c.target->parent = currentNode;
                     openList.push_back(c.target);
                 }
                 // Node is already in the openList with a valid Score.
                 // So compare the calculated Score with the existing
                 // to find the shorter path.
-                else if (gScore < c.target->gScore)
+                else if (fScore < c.target->fScore)
                 {
                     c.target->gScore = gScore;
+                    c.target->fScore = fScore;
                     c.target->parent = currentNode;
                 }
             }
