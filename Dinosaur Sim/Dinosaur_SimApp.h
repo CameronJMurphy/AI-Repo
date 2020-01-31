@@ -16,6 +16,12 @@
 #include "AttackState.h"
 #include "IdleState.h"
 #include "WithinRangeCondition.h"
+#include "DecisionBehaviour.h"
+#include "ABDecision.h"
+#include "AttackDecision.h"
+#include "IdleDecision.h"
+#include "WanderDecision.h"
+#include "PursueDecision.h"
 
 
 class Dinosaur_SimApp : public aie::Application {
@@ -56,5 +62,6 @@ protected:
 	Agent* m_arrvier;
 	ArrivalBehaviour* m_arrivalBehviour;
 
-
+	Agent* m_chooser;
+	DecisionBehaviour* m_Attackdecision; //uses decision tree
 };

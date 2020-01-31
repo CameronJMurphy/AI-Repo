@@ -163,42 +163,68 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ABDecision.cpp" />
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="ArrivalBehaviour.cpp" />
+    <ClCompile Include="AttackDecision.cpp" />
     <ClCompile Include="AttackState.cpp" />
     <ClCompile Include="Behaviour.cpp" />
     <ClCompile Include="Condition.cpp" />
+    <ClCompile Include="Decision.cpp" />
+    <ClCompile Include="DecisionBehaviour.cpp" />
+    <ClCompile Include="Dinosaur.cpp" />
     <ClCompile Include="Dinosaur_SimApp.cpp" />
     <ClCompile Include="EvadeBehaviour.cpp" />
     <ClCompile Include="FiniteStateMachine.cpp" />
     <ClCompile Include="FleeBehaviour.cpp" />
+    <ClCompile Include="Food.cpp" />
+    <ClCompile Include="Grass.cpp" />
+    <ClCompile Include="HungryCondition.cpp" />
+    <ClCompile Include="IdleDecision.cpp" />
     <ClCompile Include="IdleState.cpp" />
     <ClCompile Include="KeyboardBehaviour.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pursue.cpp" />
+    <ClCompile Include="PursueDecision.cpp" />
     <ClCompile Include="SeekBehaviour.cpp" />
     <ClCompile Include="State.cpp" />
+    <ClCompile Include="ThirstyCondition.cpp" />
     <ClCompile Include="Transition.cpp" />
     <ClCompile Include="WanderBehaviour.cpp" />
+    <ClCompile Include="WanderDecision.cpp" />
+    <ClCompile Include="Water.cpp" />
     <ClCompile Include="WithinRangeCondition.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ABDecision.h" />
     <ClInclude Include="Agent.h" />
     <ClInclude Include="ArrivalBehaviour.h" />
+    <ClInclude Include="AttackDecision.h" />
     <ClInclude Include="AttackState.h" />
     <ClInclude Include="Behaviour.h" />
     <ClInclude Include="Condition.h" />
+    <ClInclude Include="Decision.h" />
+    <ClInclude Include="DecisionBehaviour.h" />
+    <ClInclude Include="Dinosaur.h" />
     <ClInclude Include="Dinosaur_SimApp.h" />
     <ClInclude Include="EvadeBehaviour.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="FleeBehaviour.h" />
+    <ClInclude Include="Food.h" />
+    <ClInclude Include="Grass.h" />
+    <ClInclude Include="HungryCondition.h" />
+    <ClInclude Include="IdleDecision.h" />
     <ClInclude Include="IdleState.h" />
     <ClInclude Include="KeyboardBehaviour.h" />
     <ClInclude Include="Pursue.h" />
+    <ClInclude Include="PursueDecision.h" />
     <ClInclude Include="SeekBehaviour.h" />
     <ClInclude Include="State.h" />
+    <ClInclude Include="ThirstyCondition.h" />
     <ClInclude Include="Transition.h" />
     <ClInclude Include="WanderBehaviour.h" />
+    <ClInclude Include="WanderDecision.h" />
+    <ClInclude Include="Water.h" />
     <ClInclude Include="WithinRangeCondition.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

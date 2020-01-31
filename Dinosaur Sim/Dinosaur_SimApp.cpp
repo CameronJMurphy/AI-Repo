@@ -27,28 +27,44 @@ bool Dinosaur_SimApp::startup() {
 	m_player->AddBehaviour(m_keyboardBehaviour); //movement behaviour
 
 	
-	//enemy Agent
-	m_enemy = new Agent();
-	m_enemy->SetPosition(vector2(500.0f, 500.0f));
-	m_enemy->SetVelocity(vector2(0, 0));
-	m_enemyBehaviour = new FiniteStateMachine();
-	m_enemy->AddBehaviour(m_enemyBehaviour); //enemy behaviour
+	//chooser
+	m_chooser = new Agent();
+	m_chooser->SetPosition(vector2(200, 200));
+	m_chooser->SetVelocity(vector2(0, 0));
+	m_Attackdecision = new DecisionBehaviour();
+	ABDecision* withinRange50 = new ABDecision(new AttackDecision(m_player), new PursueDecision(m_player, 30), new WithinRangeCondition(m_player, 50));
+	ABDecision* withinRange200 = new ABDecision(withinRange50, new WanderDecision(), new WithinRangeCondition(m_player, 200));
+	m_Attackdecision->addDecision(withinRange200); 
+	m_chooser->AddBehaviour(m_Attackdecision); //if within range, attck
 
-	//create new states
-	auto attackState = new AttackState(m_player, 150); auto idleState = new IdleState(); 
-	// create the condition, setting the player as the target
-	auto withinRangeCondition = new WithinRangeCondition(m_player, 200); 
-	// create the transition, this will transition to the attack state when the 
-	// withinRange condition is met 
-	auto toAttackTransition = new Transition(attackState, withinRangeCondition); 
-	// add the transition to the idle state 
-	idleState->addTransition(toAttackTransition); 
-	// add all the states, conditions and transitions to the FSM (the enemy // behaviour) 
-	m_enemyBehaviour->addState(attackState); 
-	m_enemyBehaviour->addState(idleState); 
-	m_enemyBehaviour->addCondition(withinRangeCondition); 
-	m_enemyBehaviour->addTransition(toAttackTransition); // set the current state of the FSM
-	m_enemyBehaviour->setCurrentState(idleState);
+
+
+
+
+
+
+	////enemy Agent
+	//m_enemy = new Agent();
+	//m_enemy->SetPosition(vector2(500.0f, 500.0f));
+	//m_enemy->SetVelocity(vector2(0, 0));
+	//m_enemyBehaviour = new FiniteStateMachine();
+	//m_enemy->AddBehaviour(m_enemyBehaviour); //enemy behaviour
+
+	////create new states
+	//auto attackState = new AttackState(m_player, 150); auto idleState = new IdleState(); 
+	//// create the condition, setting the player as the target
+	//auto withinRangeCondition = new WithinRangeCondition(m_player, 200); 
+	//// create the transition, this will transition to the attack state when the 
+	//// withinRange condition is met 
+	//auto toAttackTransition = new Transition(attackState, withinRangeCondition); 
+	//// add the transition to the idle state 
+	//idleState->addTransition(toAttackTransition); 
+	//// add all the states, conditions and transitions to the FSM (the enemy // behaviour) 
+	//m_enemyBehaviour->addState(attackState); 
+	//m_enemyBehaviour->addState(idleState); 
+	//m_enemyBehaviour->addCondition(withinRangeCondition); 
+	//m_enemyBehaviour->addTransition(toAttackTransition); // set the current state of the FSM
+	//m_enemyBehaviour->setCurrentState(idleState);
 	////Cat Agent
 	//m_cat = new Agent();
 	//m_cat->SetPosition(vector2(400.0f, 400.0f));
@@ -100,7 +116,8 @@ void Dinosaur_SimApp::shutdown() {
 void Dinosaur_SimApp::update(float deltaTime) {
 	
 	m_player->Update(deltaTime);
-	m_enemy->Update(deltaTime);
+	m_chooser->Update(deltaTime);
+	//m_enemy->Update(deltaTime);
 	//m_cat->Update(deltaTime);
 	//m_traveller->Update(deltaTime);
 	//m_Chaser->Update(deltaTime);
@@ -125,7 +142,8 @@ void Dinosaur_SimApp::draw() {
 
 	// draw your stuff here!
 	m_player->Draw(m_2dRenderer);
-	m_enemy->Draw(m_2dRenderer);
+	m_chooser->Draw(m_2dRenderer);
+	//m_enemy->Draw(m_2dRenderer);
 	//m_cat->Draw(m_2dRenderer);
 	//m_traveller->Draw(m_2dRenderer);
 	//m_Chaser->Draw(m_2dRenderer);

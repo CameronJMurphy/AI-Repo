@@ -13,23 +13,65 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\States">
-      <UniqueIdentifier>{69430585-3d2f-4727-a8f9-9b4f3aae3810}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Behaviours">
       <UniqueIdentifier>{03f73e13-7d86-416f-a34f-d73d00138e37}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Conditions">
-      <UniqueIdentifier>{6e5c6505-9b6f-4880-95e9-8255240edaff}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Behaviours">
       <UniqueIdentifier>{21488732-742f-4fb3-b4d9-45b12ca4f046}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Conditions">
+    <Filter Include="Source Files\FSM">
+      <UniqueIdentifier>{0d9262cf-c537-4a3b-ae0e-48cf1ee889cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FSM\Conditions">
       <UniqueIdentifier>{13465205-96f9-466a-ae66-83d78b7310db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\States">
+    <Filter Include="Source Files\FSM\Transitions">
+      <UniqueIdentifier>{6be7f4c0-ecf8-47af-a97f-bb91d7942327}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FSM\States">
       <UniqueIdentifier>{3cfb8aaa-389c-48c3-9ad4-c850a9bbd4f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FSM">
+      <UniqueIdentifier>{4bd217af-59ed-4f8d-abe7-b88020ffdd18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FSM\Conditions">
+      <UniqueIdentifier>{6e5c6505-9b6f-4880-95e9-8255240edaff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FSM\Transitions">
+      <UniqueIdentifier>{3263c995-efb2-4023-a396-a60c75254907}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FSM\States">
+      <UniqueIdentifier>{69430585-3d2f-4727-a8f9-9b4f3aae3810}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Decision Tree">
+      <UniqueIdentifier>{22c28611-1542-4981-9458-50e1ced66ea2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Decision Tree">
+      <UniqueIdentifier>{e5e70e32-e9b2-4ac5-8c5d-8e6d3a43c5a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Decision Tree\Decisions">
+      <UniqueIdentifier>{9289cfed-a119-429e-816d-713481fb29b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Decision Tree\Decisions">
+      <UniqueIdentifier>{94590621-4c13-4275-8d70-841ddde41721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Decision Tree\DecisionTypes">
+      <UniqueIdentifier>{bc15f736-121b-4d61-b360-337730a54d98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Decision Tree\DecisionTypes">
+      <UniqueIdentifier>{1d056ebb-e8b9-4ba9-a939-d819bd47e7d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Decision Tree\Conditions">
+      <UniqueIdentifier>{51707a90-7e7d-4b16-be72-9239bec1207e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Decision Tree\Conditions">
+      <UniqueIdentifier>{e3b7bbf0-29b1-4e3b-9ab7-2c1a01e7e80f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects">
+      <UniqueIdentifier>{365aef3d-f37b-442b-9cf7-85879188e4bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects">
+      <UniqueIdentifier>{e385c067-bc7f-47c0-afe5-342c2e991399}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -64,28 +106,67 @@
       <Filter>Source Files\Behaviours</Filter>
     </ClCompile>
     <ClCompile Include="AttackState.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
-    <ClCompile Include="Condition.cpp">
-      <Filter>Source Files\Conditions</Filter>
+      <Filter>Source Files\FSM\States</Filter>
     </ClCompile>
     <ClCompile Include="FleeBehaviour.cpp">
       <Filter>Source Files\Behaviours</Filter>
     </ClCompile>
-    <ClCompile Include="WithinRangeCondition.cpp">
-      <Filter>Source Files\Conditions</Filter>
-    </ClCompile>
     <ClCompile Include="WanderBehaviour.cpp">
       <Filter>Source Files\Behaviours</Filter>
     </ClCompile>
-    <ClCompile Include="Transition.cpp">
-      <Filter>Source Files\Conditions</Filter>
-    </ClCompile>
     <ClCompile Include="State.cpp">
-      <Filter>Source Files\States</Filter>
+      <Filter>Source Files\FSM\States</Filter>
     </ClCompile>
     <ClCompile Include="IdleState.cpp">
-      <Filter>Source Files\States</Filter>
+      <Filter>Source Files\FSM\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Transition.cpp">
+      <Filter>Source Files\FSM\Transitions</Filter>
+    </ClCompile>
+    <ClCompile Include="Decision.cpp">
+      <Filter>Source Files\Decision Tree\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackDecision.cpp">
+      <Filter>Source Files\Decision Tree\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleDecision.cpp">
+      <Filter>Source Files\Decision Tree\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="ABDecision.cpp">
+      <Filter>Source Files\Decision Tree\DecisionTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirstyCondition.cpp">
+      <Filter>Source Files\Decision Tree\Conditions</Filter>
+    </ClCompile>
+    <ClCompile Include="HungryCondition.cpp">
+      <Filter>Source Files\Decision Tree\Conditions</Filter>
+    </ClCompile>
+    <ClCompile Include="DecisionBehaviour.cpp">
+      <Filter>Source Files\Behaviours</Filter>
+    </ClCompile>
+    <ClCompile Include="Condition.cpp">
+      <Filter>Source Files\Decision Tree\Conditions</Filter>
+    </ClCompile>
+    <ClCompile Include="WithinRangeCondition.cpp">
+      <Filter>Source Files\Decision Tree\Conditions</Filter>
+    </ClCompile>
+    <ClCompile Include="WanderDecision.cpp">
+      <Filter>Source Files\Decision Tree\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Dinosaur.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Food.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Grass.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Water.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="PursueDecision.cpp">
+      <Filter>Source Files\Decision Tree\Decisions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -99,7 +180,7 @@
       <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
     <ClInclude Include="AttackState.h">
-      <Filter>Header Files\States</Filter>
+      <Filter>Header Files\FSM\States</Filter>
     </ClInclude>
     <ClInclude Include="Behaviour.h">
       <Filter>Header Files\Behaviours</Filter>
@@ -111,10 +192,10 @@
       <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
     <ClInclude Include="IdleState.h">
-      <Filter>Header Files\States</Filter>
+      <Filter>Header Files\FSM\States</Filter>
     </ClInclude>
     <ClInclude Include="State.h">
-      <Filter>Header Files\States</Filter>
+      <Filter>Header Files\FSM\States</Filter>
     </ClInclude>
     <ClInclude Include="SeekBehaviour.h">
       <Filter>Header Files\Behaviours</Filter>
@@ -125,20 +206,59 @@
     <ClInclude Include="KeyboardBehaviour.h">
       <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
-    <ClInclude Include="WithinRangeCondition.h">
-      <Filter>Header Files\Conditions</Filter>
-    </ClInclude>
-    <ClInclude Include="Condition.h">
-      <Filter>Header Files\Conditions</Filter>
-    </ClInclude>
     <ClInclude Include="FiniteStateMachine.h">
       <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
     <ClInclude Include="WanderBehaviour.h">
       <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
+    <ClInclude Include="Decision.h">
+      <Filter>Header Files\Decision Tree\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackDecision.h">
+      <Filter>Header Files\Decision Tree\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleDecision.h">
+      <Filter>Header Files\Decision Tree\Decisions</Filter>
+    </ClInclude>
     <ClInclude Include="Transition.h">
-      <Filter>Header Files\Conditions</Filter>
+      <Filter>Header Files\FSM\Transitions</Filter>
+    </ClInclude>
+    <ClInclude Include="ABDecision.h">
+      <Filter>Header Files\Decision Tree\DecisionTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Condition.h">
+      <Filter>Header Files\Decision Tree\Conditions</Filter>
+    </ClInclude>
+    <ClInclude Include="WithinRangeCondition.h">
+      <Filter>Header Files\Decision Tree\Conditions</Filter>
+    </ClInclude>
+    <ClInclude Include="HungryCondition.h">
+      <Filter>Header Files\Decision Tree\Conditions</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirstyCondition.h">
+      <Filter>Header Files\Decision Tree\Conditions</Filter>
+    </ClInclude>
+    <ClInclude Include="WanderDecision.h">
+      <Filter>Header Files\Decision Tree\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Water.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Grass.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Food.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Dinosaur.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="PursueDecision.h">
+      <Filter>Header Files\Decision Tree\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="DecisionBehaviour.h">
+      <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
