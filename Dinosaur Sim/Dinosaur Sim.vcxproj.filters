@@ -168,6 +168,15 @@
     <ClCompile Include="PursueDecision.cpp">
       <Filter>Source Files\Decision Tree\Decisions</Filter>
     </ClCompile>
+    <ClCompile Include="FindWaterDecision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dijkstrasSearch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SeekNodeBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dinosaur_SimApp.h">
@@ -259,6 +268,12 @@
     </ClInclude>
     <ClInclude Include="DecisionBehaviour.h">
       <Filter>Header Files\Behaviours</Filter>
+    </ClInclude>
+    <ClInclude Include="FindWaterDecision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SeekNodeBehaviour.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

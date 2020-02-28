@@ -22,6 +22,11 @@
 #include "IdleDecision.h"
 #include "WanderDecision.h"
 #include "PursueDecision.h"
+#include "Dinosaur.h"
+#include "HungryCondition.h"
+#include "ThirstyCondition.h"
+#include <dijkstrasSearch.h>
+#include "Grass.h"
 
 
 class Dinosaur_SimApp : public aie::Application {
@@ -41,27 +46,17 @@ protected:
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
 	
+	//player
 	Agent* m_player; //the player
 	KeyboardBehaviour* m_keyboardBehaviour;
-	
-	Agent* m_enemy; //the enemy
-	FiniteStateMachine* m_enemyBehaviour;
-	
-	Agent* m_cat; // the cat
-	FleeBehaviour* m_fleeBehaviour;
-	
-	Agent* m_traveller; // the travller
-	WanderBehaviour* m_wanderBehaviour;
-
-	Agent* m_Chaser;
-	PursueBehaviour* m_pursueBehaviour;
-
-	Agent* m_Runner;
-	EvadeBehaviour* m_evadeBehaviour;
-
-	Agent* m_arrvier;
-	ArrivalBehaviour* m_arrivalBehviour;
-
-	Agent* m_chooser;
+	//enemy
+	Dinosaur* m_chooser;
 	DecisionBehaviour* m_Attackdecision; //uses decision tree
+	//terrain
+	Grass* grass;
+	
+	//Agent* m_enemy; //the enemy
+	//FiniteStateMachine* m_enemyBehaviour;
+
+	
 };

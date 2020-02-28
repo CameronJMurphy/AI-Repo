@@ -3,6 +3,7 @@
 #include "Dinosaur.h"
 class ThirstyCondition : public Condition
 {
+public:
 	ThirstyCondition() {}
 	virtual ~ThirstyCondition() {}
 

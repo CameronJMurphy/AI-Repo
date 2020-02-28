@@ -3,7 +3,7 @@
 class Water
 {
 public:
-	Water() {};
+	Water(vector2 pos) : position(pos) {};
 	float GiveWater() //this is called when creature drinks from this source
 	{
 		return waterPerConsume;

@@ -73,7 +73,7 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)temp\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)bootstrap;$(SolutionDir)dependencies/imgui;$(SolutionDir)dependencies/glm;$(VC_IncludePath);$(WindowsSDK_IncludePath);F:/aieBootstrap-master/dependencies/Include</IncludePath>
+    <IncludePath>$(SolutionDir)bootstrap;$(SolutionDir)dependencies/imgui;$(SolutionDir)dependencies/glm;$(VC_IncludePath);$(WindowsSDK_IncludePath);F:/aieBootstrap-master/dependencies/Include;$(ProjectDir)inc</IncludePath>
     <LibraryPath>$(SolutionDir)dependencies\bootstrap\$(Platform)\$(Configuration);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;E:\aieBootstrap-master\dependencies\Include\Debug</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -87,7 +87,7 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)temp\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)bootstrap;$(SolutionDir)dependencies/imgui;$(SolutionDir)dependencies/glm;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>$(SolutionDir)bootstrap;$(SolutionDir)dependencies/imgui;$(SolutionDir)dependencies/glm;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)inc</IncludePath>
     <LibraryPath>$(SolutionDir)dependencies\bootstrap\$(Platform)\$(Configuration);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -175,6 +175,7 @@
     <ClCompile Include="Dinosaur.cpp" />
     <ClCompile Include="Dinosaur_SimApp.cpp" />
     <ClCompile Include="EvadeBehaviour.cpp" />
+    <ClCompile Include="FindWaterDecision.cpp" />
     <ClCompile Include="FiniteStateMachine.cpp" />
     <ClCompile Include="FleeBehaviour.cpp" />
     <ClCompile Include="Food.cpp" />
@@ -187,6 +188,8 @@
     <ClCompile Include="Pursue.cpp" />
     <ClCompile Include="PursueDecision.cpp" />
     <ClCompile Include="SeekBehaviour.cpp" />
+    <ClCompile Include="SeekNodeBehaviour.cpp" />
+    <ClCompile Include="src\dijkstrasSearch.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="ThirstyCondition.cpp" />
     <ClCompile Include="Transition.cpp" />
@@ -208,6 +211,7 @@
     <ClInclude Include="Dinosaur.h" />
     <ClInclude Include="Dinosaur_SimApp.h" />
     <ClInclude Include="EvadeBehaviour.h" />
+    <ClInclude Include="FindWaterDecision.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="FleeBehaviour.h" />
     <ClInclude Include="Food.h" />
@@ -219,6 +223,7 @@
     <ClInclude Include="Pursue.h" />
     <ClInclude Include="PursueDecision.h" />
     <ClInclude Include="SeekBehaviour.h" />
+    <ClInclude Include="SeekNodeBehaviour.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="ThirstyCondition.h" />
     <ClInclude Include="Transition.h" />

@@ -27,6 +27,8 @@ public:
 	float GetCurrentThirst();
 	float GetMaxThirst();
 	bool IsCarnivore();
+
+	void StatsDecay(float deltaTime);
 private:
 	float maxHunger;
 	float currentHunger;
@@ -36,6 +38,6 @@ private:
 	int damage;
 	int currentHealth;
 	int maxHealth;
-	
+	float decayAmount = 1;
 };
 

@@ -24,6 +24,7 @@ Agent::~Agent()
 	 ClampVelocity(m_Velocity);
 
 	 m_Position = m_Position + (m_Velocity * deltaTime);//apply velocity to position
+	 
 }
 
 

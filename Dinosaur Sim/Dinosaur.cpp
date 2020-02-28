@@ -75,3 +75,11 @@ bool Dinosaur::IsCarnivore()
 {
 	return carnivore;
 }
+
+
+void Dinosaur::StatsDecay(float deltaTime)
+{
+	// reduce hungry and thirst per sec
+	SetCurrentHunger(GetCurrentHunger() - (decayAmount * deltaTime));
+	SetCurrentThirst(GetCurrentThirst() -  (decayAmount * deltaTime));
+}
