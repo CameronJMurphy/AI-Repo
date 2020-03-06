@@ -2,10 +2,23 @@
 
 void FindFoodDecision::makeDecision(Agent* agent, float deltaTime)
 {
-	Pathfinding::Node* closestNode = FindClosestNode(agent->GetPosition().x, agent->GetPosition().y, map);//find closest node to agent
-
-	path = dijkstrasSearch(closestNode, target); //find the path towards food
-
-	SeekNode(agent, deltaTime, path.front()->connections.front().target); //seek towards next node in path
-	path.pop_front(); //then pop front
+	if (!hasClosestNode)
+	{
+		Pathfinding::Node* closestNode = FindClosestNode(agent->GetPosition().x, agent->GetPosition().y, map);//find closest node to agent
+		hasClosestNode = true;
+		path = dijkstrasSearch(closestNode, target, map); //find the path towards food
+	}
+	if (path.size() > 0)
+	{
+		SeekNode(agent, deltaTime, path.front()); //seek towards next node in path
+		if (fabs(path.front()->position.x - agent->GetPosition().x) < 1 &&
+			fabs(path.front()->position.y - agent->GetPosition().y) < 1)//compare agent pos vs node pos
+		{
+			path.pop_front(); //then pop front
+		}
+	}
+	if (path.size() == 0)
+	{
+		hasClosestNode = false;
+	}
 }

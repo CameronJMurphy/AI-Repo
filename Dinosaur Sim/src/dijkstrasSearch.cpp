@@ -5,10 +5,11 @@ bool CompareFloat(float a, float b)
     return fabs(a - b) < .001;
 }
 
-std::list<Pathfinding::Node*> GenerateNodeMap(const int mapWidth, const int mapHeight, const float windowWidth, const float windowHeight)
+std::vector<Pathfinding::Node*> GenerateNodeMap(const int mapWidth, const int mapHeight, const float windowWidth, const float windowHeight)
 {
     //generate list
-    std::list<Pathfinding::Node*> map;
+    std::vector<Pathfinding::Node*> map;
+    map.reserve(mapWidth * mapHeight);
     float nodeWidth = windowWidth / mapWidth;
     float nodeHeight = windowHeight / mapHeight;
     //fill in list
@@ -23,25 +24,21 @@ std::list<Pathfinding::Node*> GenerateNodeMap(const int mapWidth, const int mapH
         }
     }
 
-    for (auto node : map) //foreach node in map
+    for (int n = 0; n < map.size(); ++n) //foreach node in map
     {
-        std::list<Edge> edges; //make a list of edges
-        for (auto n : map) //foreach node in map
-        {
-            if (n != node) //if they're not the same 
-            {
-                if (CompareFloat(n->position.y, node->position.y) ||
-                    CompareFloat(n->position.y, node->position.y + nodeHeight) || 
-                    CompareFloat(n->position.y, node->position.y - nodeHeight))//check to see if this node is within 1 position on y axis
-                {
-                    if (CompareFloat(n->position.x, node->position.x)|| 
-                        CompareFloat(n->position.x, node->position.x + nodeWidth) || 
-                        CompareFloat(n->position.x, node->position.x - nodeWidth)) //check to see if this node is within 1 position on x axis
-                    {
-                        Edge e; //make temp edge
-                        e.target = n; //assign its target
-                        edges.push_back(e); // push onto list
-                    }
+        auto node = map[n];
+        std::list<Pathfinding::Edge> edges; //make a list of edges
+
+        const int x = n % mapWidth;
+        const int y = n / mapWidth;
+
+        for (int i = -1; i < 2; ++i) {
+            for (int j = -1; j < 2; ++j) {
+                if (x + i >= 0 && x + i < mapWidth && y + j >= 0 && y + j < mapHeight && !(i == 0 && j == 0)) {
+                    int neighbour_index = (y + j) * mapWidth + (x + i);
+                    Pathfinding::Edge e; //make temp edge
+                    e.target = map[neighbour_index]; //assign its target
+                    edges.push_back(e); // push onto list
                 }
             }
         }
@@ -50,6 +47,28 @@ std::list<Pathfinding::Node*> GenerateNodeMap(const int mapWidth, const int mapH
         {
             node->connections.push_back(edge); //assign to the nodes connections
         }
+
+        //for (auto n : map) //foreach node in map
+        //{
+        //    if (n != node) //if they're not the same 
+        //    {
+        //        if (CompareFloat(n->position.y, node->position.y) ||
+        //            CompareFloat(n->position.y, node->position.y + nodeHeight) || 
+        //            CompareFloat(n->position.y, node->position.y - nodeHeight))//check to see if this node is within 1 position on y axis
+        //        {
+        //            if (CompareFloat(n->position.x, node->position.x)|| 
+        //                CompareFloat(n->position.x, node->position.x + nodeWidth) || 
+        //                CompareFloat(n->position.x, node->position.x - nodeWidth)) //check to see if this node is within 1 position on x axis
+        //            {
+        //                Pathfinding::Edge e; //make temp edge
+        //                e.target = n; //assign its target
+        //                edges.push_back(e); // push onto list
+        //            }
+        //        }
+        //    }
+        //}
+
+       
 
     }
     return map; //return
@@ -65,9 +84,17 @@ float Heuristic(Pathfinding::Node* _target, Pathfinding::Node* _endNode)
 
 }
 
-std::list<Pathfinding::Node*> dijkstrasSearch(Pathfinding::Node* startNode, Pathfinding::Node* endNode)
+std::list<Pathfinding::Node*> dijkstrasSearch(Pathfinding::Node* startNode, Pathfinding::Node* endNode, std::vector<Pathfinding::Node*> map)
 {
     using namespace Pathfinding;
+
+    //reset nodes
+    for (auto node : map) {
+        node->gScore = 100000;
+        node->parent = NULL;
+        node->fScore = 100000;
+        node->hScore = 100000;
+    }
     // Validate the input
     if (startNode == NULL || endNode == NULL)
     {
@@ -76,9 +103,7 @@ std::list<Pathfinding::Node*> dijkstrasSearch(Pathfinding::Node* startNode, Path
 
     if (startNode == endNode)
     {
-        std::list<Pathfinding::Node*> empty;
-        empty.push_back(endNode);
-        return empty;
+        throw std::runtime_error("ERROR: LIST HAS LENGTH OF ONE");
     }
 
     // Initialise the starting node
@@ -91,7 +116,9 @@ std::list<Pathfinding::Node*> dijkstrasSearch(Pathfinding::Node* startNode, Path
 
     openList.push_back(startNode);
 
-    Node* currentNode = nullptr;
+    Node* currentNode;
+
+
 
     while (openList.size() != 0)
     {
@@ -170,4 +197,11 @@ std::list<Pathfinding::Node*> dijkstrasSearch(Pathfinding::Node* startNode, Path
     }
     // Return the path for navigation between startNode/endNode 
     return path;
+}
+
+void PosToNodeTranslation(float posX, float posY, //player pos
+                          int mapX, int mapY,     //map dimensions
+                          int windowX, int windowY)//window dimension
+{
+
 }

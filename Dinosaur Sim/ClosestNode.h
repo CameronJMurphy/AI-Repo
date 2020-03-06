@@ -1,6 +1,6 @@
 #pragma once
 #include <dijkstrasSearch.h>
 
-	Pathfinding::Node* FindClosestNode(float posX, float posY, std::list<Pathfinding::Node*> _map);
+	Pathfinding::Node* FindClosestNode(float posX, float posY, std::vector<Pathfinding::Node*> _map);
 
 

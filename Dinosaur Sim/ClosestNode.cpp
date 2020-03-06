@@ -1,6 +1,6 @@
 #include "ClosestNode.h"
 
-Pathfinding::Node* FindClosestNode(float posX, float posY, std::list<Pathfinding::Node*> _map)
+Pathfinding::Node* FindClosestNode(float posX, float posY, std::vector<Pathfinding::Node*> _map)
 {
 	Pathfinding::Node* closestNode = _map.front(); //setup our closest node var
 	for (auto node : _map) //foreach node

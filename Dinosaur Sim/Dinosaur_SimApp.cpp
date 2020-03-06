@@ -17,7 +17,7 @@ bool Dinosaur_SimApp::startup() {
 	//set up node map
 	const int mapX = 20;
 	const int mapY = 20;
-	std::list<Pathfinding::Node*> nodeMap = GenerateNodeMap(mapX, mapY, getWindowWidth(), getWindowHeight());
+	std::vector<Pathfinding::Node*> nodeMap = GenerateNodeMap(mapX, mapY, getWindowWidth(), getWindowHeight());
 
 	// TODO: remember to change this when redistributing a build!
 	// the following path would be used instead: "./font/consolas.ttf"

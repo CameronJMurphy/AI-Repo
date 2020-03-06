@@ -19,11 +19,15 @@ struct Vector2
     }
 };
 
-struct Edge;
 
 namespace Pathfinding
 {
-    
+    struct Edge
+    {
+        struct Node* target;
+        float cost;
+    };
+
     struct Node
     {
         Node() {}
@@ -45,18 +49,16 @@ namespace Pathfinding
             return false;
         }
     };
+    
 
 }
 
-struct Edge
-{
-    Pathfinding::Node* target;
-    float cost;
-};
 
-std::list<Pathfinding::Node*> GenerateNodeMap(const int width, const int height, const float windowWidth, const float windowHeight);
+
+std::vector<Pathfinding::Node*> GenerateNodeMap(const int width, const int height, const float windowWidth, const float windowHeight);
 
 float Heuristic(Pathfinding::Node* _target, Pathfinding::Node* _endNode);
 
-std::list<Pathfinding::Node*> dijkstrasSearch(Pathfinding::Node* startNode, Pathfinding::Node* endNode);
+std::list<Pathfinding::Node*> dijkstrasSearch(Pathfinding::Node* startNode, Pathfinding::Node* endNode, std::vector<Pathfinding::Node*> map);
 
+void PosToNodeTranslation(float posX, float posY, int mapX, int mapY);
