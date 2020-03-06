@@ -177,6 +177,12 @@
     <ClCompile Include="SeekNodeBehaviour.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FindFoodDecision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClosestNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dinosaur_SimApp.h">
@@ -270,10 +276,16 @@
       <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
     <ClInclude Include="FindWaterDecision.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Decision Tree\Decisions</Filter>
     </ClInclude>
     <ClInclude Include="SeekNodeBehaviour.h">
+      <Filter>Header Files\Behaviours</Filter>
+    </ClInclude>
+    <ClInclude Include="ClosestNode.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FindFoodDecision.h">
+      <Filter>Header Files\Decision Tree\Decisions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

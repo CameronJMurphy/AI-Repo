@@ -30,6 +30,11 @@ bool Dinosaur_SimApp::startup() {
 	m_keyboardBehaviour = new KeyboardBehaviour();
 	m_player->AddBehaviour(m_keyboardBehaviour); //movement behaviour
 
+	//instaniate terrain
+	grassPatch = new Grass();
+	grassPatch->SetPosition(nodeMap.front()->connections.back().target->connections.back().target->connections.back().target->connections.back().target->connections.back().target);
+	bodyOfWater = new Water();
+	bodyOfWater->SetPosition(nodeMap.front()->connections.back().target->connections.back().target);
 	
 	//chooser
 	m_chooser = new Dinosaur();
@@ -39,16 +44,15 @@ bool Dinosaur_SimApp::startup() {
 	m_chooser->SetCurrentHunger(20);
 	m_chooser->SetCurrentThirst(35);
 	m_Attackdecision = new DecisionBehaviour();
-	ABDecision* withinRange50 = new ABDecision(new AttackDecision(m_player), new PursueDecision(m_player, 30), new WithinRangeCondition(m_player, 50));
-	ABDecision* withinRange200 = new ABDecision(withinRange50, new WanderDecision(), new WithinRangeCondition(m_player, 200));
-	ABDecision* isHungry = new ABDecision(withinRange200, new WanderDecision(), new HungryCondition());
+	/*ABDecision* withinRange50 = new ABDecision(new AttackDecision(m_player), new PursueDecision(m_player, 30), new WithinRangeCondition(m_player, 50));
+	ABDecision* withinRange200 = new ABDecision(withinRange50, new WanderDecision(), new WithinRangeCondition(m_player, 200));*/
+	Decision* FindFood = new FindFoodDecision(FindClosestNode(grassPatch->GetPosition().x, grassPatch->GetPosition().y, nodeMap), nodeMap);
+	Decision* FindWater = new FindWaterDecision(FindClosestNode(bodyOfWater->GetPosition().x, bodyOfWater->GetPosition().y, nodeMap), nodeMap);
+	ABDecision* isHungry = new ABDecision(FindFood, new WanderDecision(), new HungryCondition());
 	ABDecision* isThirsty = new ABDecision(new WanderDecision(), isHungry, new ThirstyCondition());
 	m_Attackdecision->addDecision(isThirsty);
 	m_chooser->AddBehaviour(m_Attackdecision); //if within range, attck
 
-	//instaniate terrain
-	grass = new Grass();
-	grass->SetPosition(nodeMap.front()->connections.back().target->connections.back().target->connections.back().target->connections.back().target->connections.back().target);
 	
 
 	////enemy Agent
@@ -93,7 +97,8 @@ void Dinosaur_SimApp::draw() {
 	// draw your stuff here!
 	m_player->Draw(m_2dRenderer);
 	m_chooser->Draw(m_2dRenderer);
-	grass->Draw(m_2dRenderer);
+	grassPatch->Draw(m_2dRenderer);
+	bodyOfWater->Draw(m_2dRenderer);
 	//m_enemy->Draw(m_2dRenderer);
 	
 

@@ -12,7 +12,7 @@ public:
 		Dinosaur* dino = dynamic_cast<Dinosaur*>(agent);
 		if (dino != NULL)
 		{
-			if (dino->GetCurrentThirst() < (dino->GetMaxThirst() / 2)) //if the dino has less then 50% of its max thirst
+			if (dino->GetCurrentThirst() < (dino->GetMaxThirst() / 1.5)) //if the dino has less then 50% of its max thirst
 			{
 				return true; //it is thirsty
 			}

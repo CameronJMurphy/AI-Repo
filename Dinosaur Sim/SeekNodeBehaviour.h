@@ -12,6 +12,8 @@ public:
 	virtual float GetWeight() { return weight; };
 	void SetTarget(Pathfinding::Node* t) { m_target = t; }
 	void SetPath(std::list<Pathfinding::Node*> _path) { path = _path; }
+	vector2 SeekNode(Agent* agent, float deltaTime);
+	/*void SeekNode(Agent* agent, float deltaTime, Pathfinding::Node* target);*/
 private:
 	Pathfinding::Node* m_target;
 	std::list<Pathfinding::Node*> path;
@@ -20,3 +22,4 @@ private:
 	
 };
 
+void SeekNode(Agent* agent, float deltaTime, Pathfinding::Node* target);

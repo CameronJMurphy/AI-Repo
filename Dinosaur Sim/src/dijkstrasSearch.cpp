@@ -17,6 +17,7 @@ std::list<Pathfinding::Node*> GenerateNodeMap(const int mapWidth, const int mapH
         for (int x = 0; x < mapWidth; ++x)
         {
             Pathfinding::Node* n = new Pathfinding::Node(); //make node
+            n->parent = NULL;
             n->position = Vector2(x * nodeWidth, y * nodeHeight); //set pos
             map.push_back(n); //push into list
         }
@@ -75,7 +76,9 @@ std::list<Pathfinding::Node*> dijkstrasSearch(Pathfinding::Node* startNode, Path
 
     if (startNode == endNode)
     {
-        throw std::runtime_error("ERROR: LIST HAS LENGTH OF ONE");
+        std::list<Pathfinding::Node*> empty;
+        empty.push_back(endNode);
+        return empty;
     }
 
     // Initialise the starting node
@@ -88,7 +91,7 @@ std::list<Pathfinding::Node*> dijkstrasSearch(Pathfinding::Node* startNode, Path
 
     openList.push_back(startNode);
 
-    Node* currentNode;
+    Node* currentNode = nullptr;
 
     while (openList.size() != 0)
     {

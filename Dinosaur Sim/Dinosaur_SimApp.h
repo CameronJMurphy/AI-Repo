@@ -27,6 +27,10 @@
 #include "ThirstyCondition.h"
 #include <dijkstrasSearch.h>
 #include "Grass.h"
+#include "Water.h"
+#include "FindFoodDecision.h"
+#include "FindWaterDecision.h"
+#include "ClosestNode.h"
 
 
 class Dinosaur_SimApp : public aie::Application {
@@ -52,8 +56,8 @@ protected:
 	//enemy
 	Dinosaur* m_chooser;
 	DecisionBehaviour* m_Attackdecision; //uses decision tree
-	//terrain
-	Grass* grass;
+	Grass* grassPatch;
+	Water* bodyOfWater;
 	
 	//Agent* m_enemy; //the enemy
 	//FiniteStateMachine* m_enemyBehaviour;
