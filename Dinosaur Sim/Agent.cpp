@@ -30,7 +30,9 @@ Agent::~Agent()
 
  void Agent::Draw(aie::Renderer2D* renderer)
 {
+	 renderer->setRenderColour(0, 0, 1);
 	 renderer->drawBox(m_Position.x, m_Position.y, 10, 10); // Draw the agent
+	 renderer->setRenderColour(1, 1, 1);
 }
 
 void Agent::AddBehaviour(Behaviour* behaviour)

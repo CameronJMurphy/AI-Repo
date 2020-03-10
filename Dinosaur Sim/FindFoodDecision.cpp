@@ -20,5 +20,14 @@ void FindFoodDecision::makeDecision(Agent* agent, float deltaTime)
 	if (path.size() == 0)
 	{
 		hasClosestNode = false;
+		//EAT
+		Dinosaur* dino = dynamic_cast<Dinosaur*>(agent);
+		//temp var, gotta change this
+		Grass* food = new Grass();
+		food->setHungerValue(50);
+		if (dino != NULL)
+		{
+			dino->Eat(food);
+		}
 	}
 }

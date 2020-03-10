@@ -103,7 +103,10 @@ std::list<Pathfinding::Node*> dijkstrasSearch(Pathfinding::Node* startNode, Path
 
     if (startNode == endNode)
     {
-        throw std::runtime_error("ERROR: LIST HAS LENGTH OF ONE");
+        //throw std::runtime_error("ERROR: LIST HAS LENGTH OF ONE");
+        std::list<Pathfinding::Node*> empty;
+        empty.push_back(startNode);
+        return empty;
     }
 
     // Initialise the starting node

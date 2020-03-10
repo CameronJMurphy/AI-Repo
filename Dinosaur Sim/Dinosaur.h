@@ -1,9 +1,11 @@
 #pragma once
 #include "Agent.h"
 #include "Food.h"
+#include "Water.h"
 class Dinosaur : public Agent, public Food
 {
 public:
+
 	void SetCurrentHunger(float val);
 	void SetMaxHunger(float val);
 
@@ -28,7 +30,11 @@ public:
 	float GetMaxThirst();
 	bool IsCarnivore();
 
+
 	void StatsDecay(float deltaTime);
+
+	void Eat(Food* food);
+	void Drink(Water* water);
 private:
 	float maxHunger;
 	float currentHunger;

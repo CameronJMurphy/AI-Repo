@@ -3,6 +3,8 @@
 #include <dijkstrasSearch.h>
 #include "SeekNodeBehaviour.h"
 #include "ClosestNode.h"
+#include "Dinosaur.h"
+#include "Grass.h"
 
 class FindFoodDecision : public Decision
 {

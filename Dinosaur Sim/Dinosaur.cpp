@@ -2,6 +2,10 @@
 //Setters
 void Dinosaur::SetCurrentHunger(float val)
 {
+	if (val > GetMaxHunger())
+	{
+		val = GetMaxHunger();
+	}
 	currentHunger = val;
 }
 void Dinosaur::SetMaxHunger(float val)
@@ -10,6 +14,10 @@ void Dinosaur::SetMaxHunger(float val)
 }
 void Dinosaur::SetCurrentThirst(float val)
 {
+	if (val > GetMaxThirst())
+	{
+		val = GetMaxThirst();
+	}
 	currentThirst = val;
 }
 void Dinosaur::SetMaxThirst(float val)
@@ -20,7 +28,6 @@ void Dinosaur::SetCarnivore(bool isCarnivore)
 {
 	carnivore = isCarnivore;
 }
-
 void Dinosaur::SetCurrentHealth(float val)
 {
 	currentHealth = val;
@@ -80,6 +87,13 @@ bool Dinosaur::IsCarnivore()
 void Dinosaur::StatsDecay(float deltaTime)
 {
 	// reduce hungry and thirst per sec
-	//SetCurrentThirst(GetCurrentThirst() - (decayAmount * deltaTime));
+	SetCurrentThirst(GetCurrentThirst() - (decayAmount * deltaTime));
 	SetCurrentHunger(GetCurrentHunger() - (decayAmount * deltaTime));
+}
+void Dinosaur::Eat(Food* food) 
+{
+	SetCurrentHunger(GetCurrentHunger() + food->HungerValue());
+}
+void Dinosaur::Drink(Water* water) {
+	SetCurrentThirst(GetCurrentThirst() + water->WaterValue());
 }

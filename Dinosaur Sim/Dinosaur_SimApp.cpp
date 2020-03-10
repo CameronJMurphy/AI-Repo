@@ -15,8 +15,8 @@ bool Dinosaur_SimApp::startup() {
 	
 	m_2dRenderer = new aie::Renderer2D();
 	//set up node map
-	const int mapX = 20;
-	const int mapY = 20;
+	const int mapX = 50;
+	const int mapY = 50;
 	std::vector<Pathfinding::Node*> nodeMap = GenerateNodeMap(mapX, mapY, getWindowWidth(), getWindowHeight());
 
 	// TODO: remember to change this when redistributing a build!
@@ -32,15 +32,16 @@ bool Dinosaur_SimApp::startup() {
 
 	//instaniate terrain
 	grassPatch = new Grass();
-	grassPatch->SetPosition(nodeMap.front()->connections.back().target->connections.back().target->connections.back().target->connections.back().target->connections.back().target);
+	grassPatch->setHungerValue(100);
+	grassPatch->SetPosition(nodeMap[30*25 + 40]);
 	bodyOfWater = new Water();
-	bodyOfWater->SetPosition(nodeMap.front()->connections.back().target->connections.back().target);
+	bodyOfWater->SetPosition(nodeMap[50 * 25 + 25]);
 	
 	//chooser
 	m_chooser = new Dinosaur();
 	m_chooser->SetPosition(vector2(200, 200));
 	m_chooser->SetVelocity(vector2(0, 0));
-	m_chooser->SetDinosaur(20, 35, true, 10, 3);
+	m_chooser->SetDinosaur(100, 100, true, 10, 3);
 	m_chooser->SetCurrentHunger(20);
 	m_chooser->SetCurrentThirst(35);
 	m_Attackdecision = new DecisionBehaviour();
@@ -49,7 +50,7 @@ bool Dinosaur_SimApp::startup() {
 	Decision* FindFood = new FindFoodDecision(FindClosestNode(grassPatch->GetPosition().x, grassPatch->GetPosition().y, nodeMap), nodeMap);
 	Decision* FindWater = new FindWaterDecision(FindClosestNode(bodyOfWater->GetPosition().x, bodyOfWater->GetPosition().y, nodeMap), nodeMap);
 	ABDecision* isHungry = new ABDecision(FindFood, new WanderDecision(), new HungryCondition());
-	ABDecision* isThirsty = new ABDecision(new WanderDecision(), isHungry, new ThirstyCondition());
+	ABDecision* isThirsty = new ABDecision(FindWater, isHungry, new ThirstyCondition());
 	m_Attackdecision->addDecision(isThirsty);
 	m_chooser->AddBehaviour(m_Attackdecision); //if within range, attck
 
@@ -96,15 +97,15 @@ void Dinosaur_SimApp::draw() {
 
 	// draw your stuff here!
 	m_player->Draw(m_2dRenderer);
-	m_chooser->Draw(m_2dRenderer);
 	grassPatch->Draw(m_2dRenderer);
 	bodyOfWater->Draw(m_2dRenderer);
+	m_chooser->Draw(m_2dRenderer);
 	//m_enemy->Draw(m_2dRenderer);
 	
 
 	// output some text, uses the last used colour
-	m_2dRenderer->drawText(m_font,"Hunger: Thirst: ", 0, 0);
-
+	//m_2dRenderer->drawText(m_font,"Hunger: Thirst: ", 0, 0);
+	std::cout << "Hunger: " << m_chooser->GetCurrentHunger() << "	Water: " << m_chooser->GetCurrentThirst() << std::endl;
 	// done drawing sprites
 	m_2dRenderer->end();
 }
