@@ -42,7 +42,7 @@ void SeekNode(Agent* agent, float deltaTime, Pathfinding::Node* target)
 
 	vector2 direction(targetPos.x - agentPos.x, targetPos.y - agentPos.y);
 	direction.normalise();
-	float seekSpeed = 40;
+	float seekSpeed = 80;
 	direction = direction * seekSpeed;
 
 	force = direction - agent->GetVelocity();

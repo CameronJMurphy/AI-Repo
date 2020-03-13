@@ -8,7 +8,8 @@
 class Agent
 {
 public:
-	Agent();
+	Agent() {}
+	Agent(vector2 winDim) : windowDimensions(winDim) {};
 	virtual ~Agent();
 	// Update the agent and its behaviours
 	virtual void Update(float deltaTime);
@@ -22,12 +23,13 @@ public:
 	void SetVelocity(vector2 velocity) { m_Velocity = velocity; }
 	vector2 GetVelocity() { return m_Velocity; }
 	void ClampVelocity(vector2& force);
-
+	bool WithinBounds(vector2 pos);
 protected:
 	std::vector<Behaviour*> m_BehaviourList;
 	vector2 m_Position;
 	vector2 m_Velocity;
 	vector2* m_MaxVelocity = new vector2(50, 50);
+	vector2 windowDimensions;
 
 
 };

@@ -168,19 +168,22 @@
     <ClCompile Include="PursueDecision.cpp">
       <Filter>Source Files\Decision Tree\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="FindWaterDecision.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\dijkstrasSearch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SeekNodeBehaviour.cpp">
+    <ClCompile Include="ClosestNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FindFoodDecision.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Decision Tree\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="ClosestNode.cpp">
+    <ClCompile Include="FindWaterDecision.cpp">
+      <Filter>Source Files\Decision Tree\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="SeekNodeBehaviour.cpp">
+      <Filter>Source Files\Behaviours</Filter>
+    </ClCompile>
+    <ClCompile Include="EvadeDecision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -285,6 +288,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FindFoodDecision.h">
+      <Filter>Header Files\Decision Tree\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="EvadeDecision.h">
       <Filter>Header Files\Decision Tree\Decisions</Filter>
     </ClInclude>
   </ItemGroup>

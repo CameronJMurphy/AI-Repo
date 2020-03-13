@@ -1,11 +1,14 @@
 #include "Agent.h"
 
-
-
-Agent::Agent()
-{
+bool Agent::WithinBounds(vector2 pos) {
+	if (pos.x > windowDimensions.x ||
+		pos.x < 0 ||
+		pos.y > windowDimensions.y ||
+		pos.y < 0) {
+		return false;
+	}
+	return true;
 }
-
 
 Agent::~Agent()
 {
@@ -23,16 +26,15 @@ Agent::~Agent()
 	 m_Velocity = m_Velocity + (force * deltaTime);//calculate velocity
 	 ClampVelocity(m_Velocity);
 
-	 m_Position = m_Position + (m_Velocity * deltaTime);//apply velocity to position
-	 
+	 if (WithinBounds(m_Position + (m_Velocity * deltaTime))) {
+		 m_Position = m_Position + (m_Velocity * deltaTime);//apply velocity to position
+	 }	 
 }
 
 
  void Agent::Draw(aie::Renderer2D* renderer)
 {
-	 renderer->setRenderColour(0, 0, 1);
 	 renderer->drawBox(m_Position.x, m_Position.y, 10, 10); // Draw the agent
-	 renderer->setRenderColour(1, 1, 1);
 }
 
 void Agent::AddBehaviour(Behaviour* behaviour)

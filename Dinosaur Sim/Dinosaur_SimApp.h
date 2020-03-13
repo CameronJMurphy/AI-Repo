@@ -31,6 +31,7 @@
 #include "FindFoodDecision.h"
 #include "FindWaterDecision.h"
 #include "ClosestNode.h"
+#include "EvadeDecision.h"
 
 
 class Dinosaur_SimApp : public aie::Application {
@@ -44,6 +45,7 @@ public:
 
 	virtual void update(float deltaTime);
 	virtual void draw();
+	
 
 protected:
 
@@ -54,10 +56,14 @@ protected:
 	Agent* m_player; //the player
 	KeyboardBehaviour* m_keyboardBehaviour;
 	//enemy
-	Dinosaur* m_chooser;
+	Dinosaur* m_herbivore;
+	Dinosaur* m_carnivore;
 	DecisionBehaviour* m_Attackdecision; //uses decision tree
+	DecisionBehaviour* m_CarniDecision; //uses decision tree
 	Grass* grassPatch;
 	Water* bodyOfWater;
+	aie::Texture* herb;
+	aie::Texture* carn;
 	
 	//Agent* m_enemy; //the enemy
 	//FiniteStateMachine* m_enemyBehaviour;

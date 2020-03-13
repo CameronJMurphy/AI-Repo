@@ -15,53 +15,57 @@ bool Dinosaur_SimApp::startup() {
 	
 	m_2dRenderer = new aie::Renderer2D();
 	//set up node map
-	const int mapX = 50;
-	const int mapY = 50;
+	const int mapX = 80;
+	const int mapY = 80;
 	std::vector<Pathfinding::Node*> nodeMap = GenerateNodeMap(mapX, mapY, getWindowWidth(), getWindowHeight());
 
+	herb = new aie::Texture("//images//Brontosaurus.jpg");
+	herb = new aie::Texture("//images//TRex.jpg");
 	// TODO: remember to change this when redistributing a build!
 	// the following path would be used instead: "./font/consolas.ttf"
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
 
-	//Player Agent
-	m_player = new Agent();
-	m_player->SetPosition(vector2(100.0f, 100.0f));
-	m_player->SetVelocity(vector2(0, 0));
-	m_keyboardBehaviour = new KeyboardBehaviour();
-	m_player->AddBehaviour(m_keyboardBehaviour); //movement behaviour
-
 	//instaniate terrain
 	grassPatch = new Grass();
 	grassPatch->setHungerValue(100);
-	grassPatch->SetPosition(nodeMap[30*25 + 40]);
+	grassPatch->SetPosition(nodeMap[mapX * mapY/3 + mapX /4]);
 	bodyOfWater = new Water();
-	bodyOfWater->SetPosition(nodeMap[50 * 25 + 25]);
+	bodyOfWater->SetPosition(nodeMap[mapX * mapY/2 + mapX/2]);
 	
-	//chooser
-	m_chooser = new Dinosaur();
-	m_chooser->SetPosition(vector2(200, 200));
-	m_chooser->SetVelocity(vector2(0, 0));
-	m_chooser->SetDinosaur(100, 100, true, 10, 3);
-	m_chooser->SetCurrentHunger(20);
-	m_chooser->SetCurrentThirst(35);
-	m_Attackdecision = new DecisionBehaviour();
-	/*ABDecision* withinRange50 = new ABDecision(new AttackDecision(m_player), new PursueDecision(m_player, 30), new WithinRangeCondition(m_player, 50));
-	ABDecision* withinRange200 = new ABDecision(withinRange50, new WanderDecision(), new WithinRangeCondition(m_player, 200));*/
-	Decision* FindFood = new FindFoodDecision(FindClosestNode(grassPatch->GetPosition().x, grassPatch->GetPosition().y, nodeMap), nodeMap);
+
+	m_herbivore = new Dinosaur();
+	m_herbivore->SetPosition(vector2(200, 200));
+
+	//carnivore
+	m_carnivore = new Dinosaur();
+	m_carnivore->SetPosition(vector2(400, 400));
+	m_carnivore->SetVelocity(vector2(0, 0));
+	m_carnivore->SetDinosaur(200, 200, true, 10, 1, vector2(getWindowWidth(), getWindowHeight()));
+	m_carnivore->SetCurrentHunger(30);
+	m_carnivore->SetCurrentThirst(200);
+	m_CarniDecision = new DecisionBehaviour();
+	Decision* FindFoodCarni = new FindFoodDecision(m_herbivore, nodeMap);
 	Decision* FindWater = new FindWaterDecision(FindClosestNode(bodyOfWater->GetPosition().x, bodyOfWater->GetPosition().y, nodeMap), nodeMap);
+	ABDecision* isCarniHungry = new ABDecision(FindFoodCarni, new WanderDecision(), new HungryCondition());
+	ABDecision* isCarniThirsty = new ABDecision(FindWater, isCarniHungry, new ThirstyCondition());
+	m_CarniDecision->addDecision(isCarniThirsty);
+	m_carnivore->AddBehaviour(m_CarniDecision);
+
+	//herbivore
+	m_herbivore->SetVelocity(vector2(0, 0));
+	m_herbivore->SetDinosaur(200, 200, true, 10, 3, vector2(getWindowWidth(), getWindowHeight()));
+	m_herbivore->SetCurrentHunger(100);
+	m_herbivore->SetCurrentThirst(100);
+	m_Attackdecision = new DecisionBehaviour();
+	Decision* FindFood = new FindFoodDecision(FindClosestNode(grassPatch->GetPosition().x, grassPatch->GetPosition().y, nodeMap), nodeMap);
 	ABDecision* isHungry = new ABDecision(FindFood, new WanderDecision(), new HungryCondition());
 	ABDecision* isThirsty = new ABDecision(FindWater, isHungry, new ThirstyCondition());
-	m_Attackdecision->addDecision(isThirsty);
-	m_chooser->AddBehaviour(m_Attackdecision); //if within range, attck
+	ABDecision* isChased = new ABDecision(new EvadeDecision(m_carnivore), isThirsty, new WithinRangeCondition(m_carnivore, 100));
+	m_Attackdecision->addDecision(isChased);
+	m_herbivore->AddBehaviour(m_Attackdecision);
+
 
 	
-
-	////enemy Agent
-	//m_enemy = new Agent();
-	//m_enemy->SetPosition(vector2(500.0f, 500.0f));
-	//m_enemy->SetVelocity(vector2(0, 0));
-	//m_enemyBehaviour = new FiniteStateMachine();
-	//m_enemy->AddBehaviour(m_enemyBehaviour); //enemy behaviour
 
 	return true;
 }
@@ -73,11 +77,15 @@ void Dinosaur_SimApp::shutdown() {
 }
 
 void Dinosaur_SimApp::update(float deltaTime) {
-	
-	m_player->Update(deltaTime);
-	m_chooser->Update(deltaTime);
-	m_chooser->StatsDecay(deltaTime);
-	//m_enemy->Update(deltaTime);
+	if(!m_herbivore->IsDead())
+	{
+		m_herbivore->Update(deltaTime);
+		m_herbivore->StatsDecay(deltaTime);
+	}
+	if (!m_carnivore->IsDead()) {
+		m_carnivore->Update(deltaTime);
+		m_carnivore->StatsDecay(deltaTime);
+	}
 
 	// input
 	aie::Input* input = aie::Input::getInstance();
@@ -96,16 +104,30 @@ void Dinosaur_SimApp::draw() {
 	m_2dRenderer->begin();
 
 	// draw your stuff here!
-	m_player->Draw(m_2dRenderer);
+	//grass
+	m_2dRenderer->setRenderColour(0, 1, 0);
 	grassPatch->Draw(m_2dRenderer);
+	//water
+	m_2dRenderer->setRenderColour(0, 0, 1);
 	bodyOfWater->Draw(m_2dRenderer);
-	m_chooser->Draw(m_2dRenderer);
-	//m_enemy->Draw(m_2dRenderer);
+	//herbivores
+	if (!m_herbivore->IsDead()) {
+	m_2dRenderer->setRenderColour(1, 1, 1);
+	m_2dRenderer->drawSprite(herb, m_herbivore->GetPosition().x, m_herbivore->GetPosition().y,50,50);
+	//m_herbivore->Draw(m_2dRenderer);
+	}
+	//carnivore
+	if (!m_carnivore->IsDead()) {
+		m_2dRenderer->setRenderColour(1, 1, 1);
+		//m_2dRenderer->drawSprite(carn, m_carnivore->GetPosition().x, m_carnivore->GetPosition().y, 50, 50);
+		m_carnivore->Draw(m_2dRenderer);
+	}
 	
 
 	// output some text, uses the last used colour
 	//m_2dRenderer->drawText(m_font,"Hunger: Thirst: ", 0, 0);
-	std::cout << "Hunger: " << m_chooser->GetCurrentHunger() << "	Water: " << m_chooser->GetCurrentThirst() << std::endl;
+	std::cout << "Hunger: " << m_carnivore->GetCurrentHunger() << "	Water: " << m_carnivore->GetCurrentThirst() << std::endl;
 	// done drawing sprites
 	m_2dRenderer->end();
 }
+

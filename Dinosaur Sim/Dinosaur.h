@@ -2,6 +2,7 @@
 #include "Agent.h"
 #include "Food.h"
 #include "Water.h"
+#include <Bits.h>
 class Dinosaur : public Agent, public Food
 {
 public:
@@ -18,7 +19,7 @@ public:
 	void SetMaxHealth(float val);
 	void SetDamage(float val);
 
-	void SetDinosaur(float _maxHunger, float _maxThirst, bool _carnivore, int _health, int _damage);
+	void SetDinosaur(float _maxHunger, float _maxThirst, bool _carnivore, int _health, int _damage , vector2 windowDimensions);
 
 
 	int GetCurrentHealth();
@@ -30,7 +31,9 @@ public:
 	float GetMaxThirst();
 	bool IsCarnivore();
 
-
+	void Hurt(int val);
+	void Die();
+	bool IsDead() { return isDead; };
 	void StatsDecay(float deltaTime);
 
 	void Eat(Food* food);
@@ -45,5 +48,6 @@ private:
 	int currentHealth;
 	int maxHealth;
 	float decayAmount = 1;
+	bool isDead = false;
 };
 

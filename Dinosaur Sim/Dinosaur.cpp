@@ -40,13 +40,14 @@ void Dinosaur::SetDamage(float val)
 {
 	damage = val;
 }
-void Dinosaur::SetDinosaur(float _hunger, float _thirst, bool _carnivore, int _health, int _damage)
+void Dinosaur::SetDinosaur(float _hunger, float _thirst, bool _carnivore, int _health, int _damage, vector2 winDim)
 {
 	SetMaxHunger(_hunger);
 	SetMaxThirst(_thirst);
 	SetCarnivore(_carnivore);
 	SetMaxHealth(_health);
 	SetDamage(_damage);
+	windowDimensions = winDim;
 }
 
 //Getters
@@ -83,7 +84,17 @@ bool Dinosaur::IsCarnivore()
 	return carnivore;
 }
 
+void Dinosaur::Hurt(int val) {
+	currentHealth -= val;
+	if (currentHealth < 0)
+	{
+		Die();
+	}
+}
 
+void Dinosaur::Die() {
+	isDead = true;
+}
 void Dinosaur::StatsDecay(float deltaTime)
 {
 	// reduce hungry and thirst per sec
