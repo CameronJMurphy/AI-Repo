@@ -86,7 +86,7 @@ bool Dinosaur::IsCarnivore()
 
 void Dinosaur::Hurt(int val) {
 	currentHealth -= val;
-	if (currentHealth < 0)
+	if (currentHealth <= 0)
 	{
 		Die();
 	}
