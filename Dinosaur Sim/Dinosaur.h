@@ -34,6 +34,7 @@ public:
 	void Hurt(int val);
 	void Die();
 	bool IsDead() { return isDead; };
+	void Respawn() { isDead = false; };
 	void StatsDecay(float deltaTime);
 
 	void Eat(Food* food);

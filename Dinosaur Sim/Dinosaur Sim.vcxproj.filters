@@ -184,7 +184,7 @@
       <Filter>Source Files\Behaviours</Filter>
     </ClCompile>
     <ClCompile Include="EvadeDecision.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Decision Tree\Decisions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

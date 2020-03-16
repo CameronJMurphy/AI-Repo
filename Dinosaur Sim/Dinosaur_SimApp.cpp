@@ -19,8 +19,8 @@ bool Dinosaur_SimApp::startup() {
 	const int mapY = 80;
 	std::vector<Pathfinding::Node*> nodeMap = GenerateNodeMap(mapX, mapY, getWindowWidth(), getWindowHeight());
 
-	herb = new aie::Texture("//images//Brontosaurus.jpg");
-	herb = new aie::Texture("//images//TRex.jpg");
+	herb = new aie::Texture(".\\images\\Brontosaurus.jpg");
+	carn = new aie::Texture(".\\images\\TRex.jpg");
 	// TODO: remember to change this when redistributing a build!
 	// the following path would be used instead: "./font/consolas.ttf"
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
@@ -40,7 +40,7 @@ bool Dinosaur_SimApp::startup() {
 	m_carnivore = new Dinosaur();
 	m_carnivore->SetPosition(vector2(400, 400));
 	m_carnivore->SetVelocity(vector2(0, 0));
-	m_carnivore->SetDinosaur(200, 200, true, 10, 1, vector2(getWindowWidth(), getWindowHeight()));
+	m_carnivore->SetDinosaur(300, 300, true, 10, 1, vector2(getWindowWidth(), getWindowHeight()));
 	m_carnivore->SetCurrentHunger(30);
 	m_carnivore->SetCurrentThirst(200);
 	m_CarniDecision = new DecisionBehaviour();
@@ -53,7 +53,7 @@ bool Dinosaur_SimApp::startup() {
 
 	//herbivore
 	m_herbivore->SetVelocity(vector2(0, 0));
-	m_herbivore->SetDinosaur(200, 200, true, 10, 3, vector2(getWindowWidth(), getWindowHeight()));
+	m_herbivore->SetDinosaur(200, 200, true, 3, 0, vector2(getWindowWidth(), getWindowHeight()));
 	m_herbivore->SetCurrentHunger(100);
 	m_herbivore->SetCurrentThirst(100);
 	m_Attackdecision = new DecisionBehaviour();
@@ -81,6 +81,13 @@ void Dinosaur_SimApp::update(float deltaTime) {
 	{
 		m_herbivore->Update(deltaTime);
 		m_herbivore->StatsDecay(deltaTime);
+	}
+	else {
+		timer += deltaTime;
+		if (timer > respawnTimer) {
+			m_herbivore->Respawn();
+			timer = 0;
+		}
 	}
 	if (!m_carnivore->IsDead()) {
 		m_carnivore->Update(deltaTime);
@@ -119,8 +126,8 @@ void Dinosaur_SimApp::draw() {
 	//carnivore
 	if (!m_carnivore->IsDead()) {
 		m_2dRenderer->setRenderColour(1, 1, 1);
-		//m_2dRenderer->drawSprite(carn, m_carnivore->GetPosition().x, m_carnivore->GetPosition().y, 50, 50);
-		m_carnivore->Draw(m_2dRenderer);
+		m_2dRenderer->drawSprite(carn, m_carnivore->GetPosition().x, m_carnivore->GetPosition().y, 50, 50);
+		//m_carnivore->Draw(m_2dRenderer);
 	}
 	
 

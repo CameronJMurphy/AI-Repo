@@ -65,6 +65,8 @@ protected:
 	aie::Texture* herb;
 	aie::Texture* carn;
 	
+	float timer = 0;
+	float respawnTimer = 10;
 	//Agent* m_enemy; //the enemy
 	//FiniteStateMachine* m_enemyBehaviour;
 
