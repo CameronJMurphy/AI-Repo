@@ -9,12 +9,12 @@ void EvadeDecision::makeDecision(Agent* agent, float deltaTime) {
 	}
 
 	vector2 agentPos = agent->GetPosition(); //this agent's pos
-	vector2 direction = -1 * (m_target->GetPosition() + m_target->GetVelocity() - agent->GetPosition()); // target pos
+	vector2 direction = -1 * (m_target->GetPosition() + m_target->GetVelocity() - agent->GetPosition()); // target pos equals where the agent is head rather than where he is
 
 	direction.normalise();
 	direction = direction * fleeSpeed;
 
 	force = direction - agent->GetVelocity();
-	agent->SetVelocity(force);
+	agent->SetVelocity(force); //agents velocity equal force
 	
 }

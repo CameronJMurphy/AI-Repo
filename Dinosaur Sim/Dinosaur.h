@@ -6,7 +6,7 @@
 class Dinosaur : public Agent, public Food
 {
 public:
-
+	//setters
 	void SetCurrentHunger(float val);
 	void SetMaxHunger(float val);
 
@@ -21,7 +21,7 @@ public:
 
 	void SetDinosaur(float _maxHunger, float _maxThirst, bool _carnivore, int _health, int _damage , vector2 windowDimensions);
 
-
+	//getters
 	int GetCurrentHealth();
 	int GetMaxHealth();
 	int GetDamage();
@@ -30,13 +30,15 @@ public:
 	float GetCurrentThirst();
 	float GetMaxThirst();
 	bool IsCarnivore();
-
+	bool IsDead() { return isDead; };
+	//death
 	void Hurt(int val);
 	void Die();
-	bool IsDead() { return isDead; };
+	//respawn
 	void Respawn() { isDead = false; SetCurrentHealth(GetMaxHealth());};
-	void StatsDecay(float deltaTime);
 
+	//stat modifiers
+	void StatsDecay(float deltaTime);
 	void Eat(Food* food);
 	void Drink(Water* water);
 private:
@@ -48,7 +50,7 @@ private:
 	int damage;
 	int currentHealth;
 	int maxHealth;
-	float decayAmount = 1;
+	float decayAmount = 1; //how much will my stats decay per second
 	bool isDead = false;
 };
 

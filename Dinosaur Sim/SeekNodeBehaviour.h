@@ -22,4 +22,4 @@ private:
 	
 };
 
-void SeekNode(Agent* agent, float deltaTime, Pathfinding::Node* target);
+void SeekNode(Agent* agent, float deltaTime, Pathfinding::Node* target); //This is so other files can access this function

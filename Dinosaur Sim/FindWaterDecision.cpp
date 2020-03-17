@@ -21,7 +21,6 @@ void FindWaterDecision::makeDecision(Agent* agent, float  deltaTime) {
 		hasClosestNode = false;
 		//DRINK
 		Dinosaur* dino = dynamic_cast<Dinosaur*>(agent);
-		//temp var, gotta change this
 		Water* water = new Water();
 		if (dino != NULL)
 		{

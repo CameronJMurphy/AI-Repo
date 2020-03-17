@@ -23,7 +23,7 @@ public:
 	void SetVelocity(vector2 velocity) { m_Velocity = velocity; }
 	vector2 GetVelocity() { return m_Velocity; }
 	void ClampVelocity(vector2& force);
-	bool WithinBounds(vector2 pos);
+	bool WithinBounds(vector2 pos); //within screen returns true
 protected:
 	std::vector<Behaviour*> m_BehaviourList;
 	vector2 m_Position;

@@ -22,26 +22,8 @@
     <Filter Include="Source Files\FSM">
       <UniqueIdentifier>{0d9262cf-c537-4a3b-ae0e-48cf1ee889cf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\FSM\Conditions">
-      <UniqueIdentifier>{13465205-96f9-466a-ae66-83d78b7310db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\FSM\Transitions">
-      <UniqueIdentifier>{6be7f4c0-ecf8-47af-a97f-bb91d7942327}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\FSM\States">
-      <UniqueIdentifier>{3cfb8aaa-389c-48c3-9ad4-c850a9bbd4f1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\FSM">
       <UniqueIdentifier>{4bd217af-59ed-4f8d-abe7-b88020ffdd18}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\FSM\Conditions">
-      <UniqueIdentifier>{6e5c6505-9b6f-4880-95e9-8255240edaff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\FSM\Transitions">
-      <UniqueIdentifier>{3263c995-efb2-4023-a396-a60c75254907}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\FSM\States">
-      <UniqueIdentifier>{69430585-3d2f-4727-a8f9-9b4f3aae3810}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Decision Tree">
       <UniqueIdentifier>{22c28611-1542-4981-9458-50e1ced66ea2}</UniqueIdentifier>
@@ -73,6 +55,42 @@
     <Filter Include="Source Files\GameObjects">
       <UniqueIdentifier>{e385c067-bc7f-47c0-afe5-342c2e991399}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Behaviours\NotUsed">
+      <UniqueIdentifier>{5c94d331-9191-45a0-9fc2-db6dec1e7959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FSM\NotUsed">
+      <UniqueIdentifier>{907d719f-e778-4f0f-aba7-073c7b220148}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FSM\NotUsed\States">
+      <UniqueIdentifier>{69430585-3d2f-4727-a8f9-9b4f3aae3810}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FSM\NotUsed\Transitions">
+      <UniqueIdentifier>{3263c995-efb2-4023-a396-a60c75254907}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FSM\NotUsed\Conditions">
+      <UniqueIdentifier>{6e5c6505-9b6f-4880-95e9-8255240edaff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Decision Tree\Decisions\NotUsed">
+      <UniqueIdentifier>{3e061c10-c37d-4ef4-8b1f-401a27f5d2e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Behaviours\NotUsed">
+      <UniqueIdentifier>{d592ac15-df4d-4974-95bf-3565bae7f2f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Decision Tree\Decisions\NotUsed">
+      <UniqueIdentifier>{5b67e41a-3ddf-4a67-bf45-af34b40bb96d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FSM\NotUsed">
+      <UniqueIdentifier>{27129dd6-c4d5-47d1-87c4-284238a4776d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FSM\NotUsed\Conditions">
+      <UniqueIdentifier>{13465205-96f9-466a-ae66-83d78b7310db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FSM\NotUsed\States">
+      <UniqueIdentifier>{3cfb8aaa-389c-48c3-9ad4-c850a9bbd4f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FSM\NotUsed\Transitions">
+      <UniqueIdentifier>{6be7f4c0-ecf8-47af-a97f-bb91d7942327}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dinosaur_SimApp.cpp">
@@ -84,52 +102,22 @@
     <ClCompile Include="Agent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ArrivalBehaviour.cpp">
-      <Filter>Source Files\Behaviours</Filter>
-    </ClCompile>
     <ClCompile Include="Behaviour.cpp">
       <Filter>Source Files\Behaviours</Filter>
     </ClCompile>
-    <ClCompile Include="EvadeBehaviour.cpp">
-      <Filter>Source Files\Behaviours</Filter>
-    </ClCompile>
-    <ClCompile Include="FiniteStateMachine.cpp">
-      <Filter>Source Files\Behaviours</Filter>
-    </ClCompile>
-    <ClCompile Include="KeyboardBehaviour.cpp">
-      <Filter>Source Files\Behaviours</Filter>
-    </ClCompile>
-    <ClCompile Include="Pursue.cpp">
-      <Filter>Source Files\Behaviours</Filter>
-    </ClCompile>
-    <ClCompile Include="SeekBehaviour.cpp">
-      <Filter>Source Files\Behaviours</Filter>
-    </ClCompile>
     <ClCompile Include="AttackState.cpp">
-      <Filter>Source Files\FSM\States</Filter>
-    </ClCompile>
-    <ClCompile Include="FleeBehaviour.cpp">
-      <Filter>Source Files\Behaviours</Filter>
-    </ClCompile>
-    <ClCompile Include="WanderBehaviour.cpp">
-      <Filter>Source Files\Behaviours</Filter>
+      <Filter>Source Files\FSM\NotUsed\States</Filter>
     </ClCompile>
     <ClCompile Include="State.cpp">
-      <Filter>Source Files\FSM\States</Filter>
+      <Filter>Source Files\FSM\NotUsed\States</Filter>
     </ClCompile>
     <ClCompile Include="IdleState.cpp">
-      <Filter>Source Files\FSM\States</Filter>
+      <Filter>Source Files\FSM\NotUsed\States</Filter>
     </ClCompile>
     <ClCompile Include="Transition.cpp">
-      <Filter>Source Files\FSM\Transitions</Filter>
+      <Filter>Source Files\FSM\NotUsed\Transitions</Filter>
     </ClCompile>
     <ClCompile Include="Decision.cpp">
-      <Filter>Source Files\Decision Tree\Decisions</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackDecision.cpp">
-      <Filter>Source Files\Decision Tree\Decisions</Filter>
-    </ClCompile>
-    <ClCompile Include="IdleDecision.cpp">
       <Filter>Source Files\Decision Tree\Decisions</Filter>
     </ClCompile>
     <ClCompile Include="ABDecision.cpp">
@@ -165,9 +153,6 @@
     <ClCompile Include="Water.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="PursueDecision.cpp">
-      <Filter>Source Files\Decision Tree\Decisions</Filter>
-    </ClCompile>
     <ClCompile Include="src\dijkstrasSearch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -186,6 +171,39 @@
     <ClCompile Include="EvadeDecision.cpp">
       <Filter>Source Files\Decision Tree\Decisions</Filter>
     </ClCompile>
+    <ClCompile Include="ArrivalBehaviour.cpp">
+      <Filter>Source Files\Behaviours\NotUsed</Filter>
+    </ClCompile>
+    <ClCompile Include="EvadeBehaviour.cpp">
+      <Filter>Source Files\Behaviours\NotUsed</Filter>
+    </ClCompile>
+    <ClCompile Include="FiniteStateMachine.cpp">
+      <Filter>Source Files\Behaviours\NotUsed</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardBehaviour.cpp">
+      <Filter>Source Files\Behaviours\NotUsed</Filter>
+    </ClCompile>
+    <ClCompile Include="FleeBehaviour.cpp">
+      <Filter>Source Files\Behaviours\NotUsed</Filter>
+    </ClCompile>
+    <ClCompile Include="Pursue.cpp">
+      <Filter>Source Files\Behaviours\NotUsed</Filter>
+    </ClCompile>
+    <ClCompile Include="SeekBehaviour.cpp">
+      <Filter>Source Files\Behaviours\NotUsed</Filter>
+    </ClCompile>
+    <ClCompile Include="WanderBehaviour.cpp">
+      <Filter>Source Files\Behaviours\NotUsed</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackDecision.cpp">
+      <Filter>Source Files\Decision Tree\Decisions\NotUsed</Filter>
+    </ClCompile>
+    <ClCompile Include="IdleDecision.cpp">
+      <Filter>Source Files\Decision Tree\Decisions\NotUsed</Filter>
+    </ClCompile>
+    <ClCompile Include="PursueDecision.cpp">
+      <Filter>Source Files\Decision Tree\Decisions\NotUsed</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dinosaur_SimApp.h">
@@ -194,53 +212,23 @@
     <ClInclude Include="Agent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ArrivalBehaviour.h">
-      <Filter>Header Files\Behaviours</Filter>
-    </ClInclude>
     <ClInclude Include="AttackState.h">
-      <Filter>Header Files\FSM\States</Filter>
+      <Filter>Header Files\FSM\NotUsed\States</Filter>
     </ClInclude>
     <ClInclude Include="Behaviour.h">
       <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
-    <ClInclude Include="EvadeBehaviour.h">
-      <Filter>Header Files\Behaviours</Filter>
-    </ClInclude>
-    <ClInclude Include="FleeBehaviour.h">
-      <Filter>Header Files\Behaviours</Filter>
-    </ClInclude>
     <ClInclude Include="IdleState.h">
-      <Filter>Header Files\FSM\States</Filter>
+      <Filter>Header Files\FSM\NotUsed\States</Filter>
     </ClInclude>
     <ClInclude Include="State.h">
-      <Filter>Header Files\FSM\States</Filter>
-    </ClInclude>
-    <ClInclude Include="SeekBehaviour.h">
-      <Filter>Header Files\Behaviours</Filter>
-    </ClInclude>
-    <ClInclude Include="Pursue.h">
-      <Filter>Header Files\Behaviours</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyboardBehaviour.h">
-      <Filter>Header Files\Behaviours</Filter>
-    </ClInclude>
-    <ClInclude Include="FiniteStateMachine.h">
-      <Filter>Header Files\Behaviours</Filter>
-    </ClInclude>
-    <ClInclude Include="WanderBehaviour.h">
-      <Filter>Header Files\Behaviours</Filter>
+      <Filter>Header Files\FSM\NotUsed\States</Filter>
     </ClInclude>
     <ClInclude Include="Decision.h">
       <Filter>Header Files\Decision Tree\Decisions</Filter>
     </ClInclude>
-    <ClInclude Include="AttackDecision.h">
-      <Filter>Header Files\Decision Tree\Decisions</Filter>
-    </ClInclude>
-    <ClInclude Include="IdleDecision.h">
-      <Filter>Header Files\Decision Tree\Decisions</Filter>
-    </ClInclude>
     <ClInclude Include="Transition.h">
-      <Filter>Header Files\FSM\Transitions</Filter>
+      <Filter>Header Files\FSM\NotUsed\Transitions</Filter>
     </ClInclude>
     <ClInclude Include="ABDecision.h">
       <Filter>Header Files\Decision Tree\DecisionTypes</Filter>
@@ -272,9 +260,6 @@
     <ClInclude Include="Dinosaur.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="PursueDecision.h">
-      <Filter>Header Files\Decision Tree\Decisions</Filter>
-    </ClInclude>
     <ClInclude Include="DecisionBehaviour.h">
       <Filter>Header Files\Behaviours</Filter>
     </ClInclude>
@@ -292,6 +277,39 @@
     </ClInclude>
     <ClInclude Include="EvadeDecision.h">
       <Filter>Header Files\Decision Tree\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="ArrivalBehaviour.h">
+      <Filter>Header Files\Behaviours\NotUsed</Filter>
+    </ClInclude>
+    <ClInclude Include="FiniteStateMachine.h">
+      <Filter>Header Files\Behaviours\NotUsed</Filter>
+    </ClInclude>
+    <ClInclude Include="FleeBehaviour.h">
+      <Filter>Header Files\Behaviours\NotUsed</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardBehaviour.h">
+      <Filter>Header Files\Behaviours\NotUsed</Filter>
+    </ClInclude>
+    <ClInclude Include="Pursue.h">
+      <Filter>Header Files\Behaviours\NotUsed</Filter>
+    </ClInclude>
+    <ClInclude Include="SeekBehaviour.h">
+      <Filter>Header Files\Behaviours\NotUsed</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackDecision.h">
+      <Filter>Header Files\Decision Tree\Decisions\NotUsed</Filter>
+    </ClInclude>
+    <ClInclude Include="IdleDecision.h">
+      <Filter>Header Files\Decision Tree\Decisions\NotUsed</Filter>
+    </ClInclude>
+    <ClInclude Include="PursueDecision.h">
+      <Filter>Header Files\Decision Tree\Decisions\NotUsed</Filter>
+    </ClInclude>
+    <ClInclude Include="EvadeBehaviour.h">
+      <Filter>Header Files\Behaviours\NotUsed</Filter>
+    </ClInclude>
+    <ClInclude Include="WanderBehaviour.h">
+      <Filter>Header Files\Behaviours\NotUsed</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

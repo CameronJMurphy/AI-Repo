@@ -46,29 +46,7 @@ std::vector<Pathfinding::Node*> GenerateNodeMap(const int mapWidth, const int ma
         for (auto edge : edges) //foreach of the edges
         {
             node->connections.push_back(edge); //assign to the nodes connections
-        }
-
-        //for (auto n : map) //foreach node in map
-        //{
-        //    if (n != node) //if they're not the same 
-        //    {
-        //        if (CompareFloat(n->position.y, node->position.y) ||
-        //            CompareFloat(n->position.y, node->position.y + nodeHeight) || 
-        //            CompareFloat(n->position.y, node->position.y - nodeHeight))//check to see if this node is within 1 position on y axis
-        //        {
-        //            if (CompareFloat(n->position.x, node->position.x)|| 
-        //                CompareFloat(n->position.x, node->position.x + nodeWidth) || 
-        //                CompareFloat(n->position.x, node->position.x - nodeWidth)) //check to see if this node is within 1 position on x axis
-        //            {
-        //                Pathfinding::Edge e; //make temp edge
-        //                e.target = n; //assign its target
-        //                edges.push_back(e); // push onto list
-        //            }
-        //        }
-        //    }
-        //}
-
-       
+        }      
 
     }
     return map; //return

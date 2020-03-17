@@ -23,10 +23,10 @@ void FindFoodDecision::makeDecision(Agent* agent, float deltaTime)
 			path.pop_front(); //then pop front
 		}
 	}
-	if (path.size() == 0)
+	if (path.size() == 0) //if we have reached our destination
 	{
 		hasClosestNode = false;
-		if (agent_target != nullptr)
+		if (agent_target != nullptr) //if we are chasing a moving target
 		{
 			//research to make sure target location hasn't changed
 			Pathfinding::Node* closestNode = FindClosestNode(agent->GetPosition().x, agent->GetPosition().y, map);//find closest node to agent
@@ -40,11 +40,13 @@ void FindFoodDecision::makeDecision(Agent* agent, float deltaTime)
 				dinoTarget->Hurt(dino->GetDamage());
 				if (dino != NULL)
 				{
+					//Eat
 					dino->Eat(dinoTarget);
 				}
 			}
 		}
 		else {
+			//Eat
 			Dinosaur* dino = dynamic_cast<Dinosaur*>(agent);
 			Grass* grassPatch = new Grass();
 			grassPatch->setHungerValue(50);

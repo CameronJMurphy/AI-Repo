@@ -7,6 +7,6 @@ public:
 	virtual void makeDecision(Agent* agent, float deltaTime);
 private:
 	Agent* m_target = nullptr;
-	float fleeSpeed = 40;	
+	float fleeSpeed = 40; //what speed should dinosaurs flee
 };
 

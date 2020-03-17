@@ -26,7 +26,7 @@ Agent::~Agent()
 	 m_Velocity = m_Velocity + (force * deltaTime);//calculate velocity
 	 ClampVelocity(m_Velocity);
 
-	 if (WithinBounds(m_Position + (m_Velocity * deltaTime))) {
+	 if (WithinBounds(m_Position + (m_Velocity * deltaTime))) { //if agent is within bounds then
 		 m_Position = m_Position + (m_Velocity * deltaTime);//apply velocity to position
 	 }	 
 }
@@ -53,7 +53,7 @@ void Agent::ClampVelocity(vector2& force)
 		force.y = m_MaxVelocity->y;
 	}
 
-	if (force.x <= -1 * m_MaxVelocity->x) //clamp velocity negitive
+	if (force.x <= -1 * m_MaxVelocity->x) //clamp velocity negative
 	{
 		force.x = -1 * m_MaxVelocity->x;
 	}

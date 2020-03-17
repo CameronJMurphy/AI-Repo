@@ -46,6 +46,6 @@ void SeekNode(Agent* agent, float deltaTime, Pathfinding::Node* target)
 	direction = direction * seekSpeed;
 
 	force = direction - agent->GetVelocity();
-	agent->SetVelocity(force);
+	agent->SetVelocity(force); //velocity now equals force
 	return;
 }

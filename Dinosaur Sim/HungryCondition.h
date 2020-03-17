@@ -9,8 +9,8 @@ public:
 
 	virtual bool test(Agent* agent) const
 	{
-		Dinosaur* dino = dynamic_cast<Dinosaur*>(agent);
-		if (dino != NULL)
+		Dinosaur* dino = dynamic_cast<Dinosaur*>(agent); //turn agent to Dinosaur type
+		if (dino != NULL)//safety check
 		{
 			if (dino->GetCurrentHunger() < (dino->GetMaxHunger() / 2)) //if the dino has less then 50% of its max hunger
 			{

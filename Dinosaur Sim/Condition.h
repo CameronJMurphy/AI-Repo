@@ -5,6 +5,7 @@
 class Condition : public Behaviour
 {
 public:
+	//virtual function for other conditions to override
 	Condition() {}
 	virtual ~Condition() {}
 	virtual bool test(Agent* gameObject) const = 0;

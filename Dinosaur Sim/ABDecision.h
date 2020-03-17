@@ -10,13 +10,13 @@ public:
 
 	virtual void makeDecision(Agent* agent, float deltaTime)
 	{
-		if (condition->test(agent))
+		if (condition->test(agent)) //if the  condition is true
 		{
-			A->makeDecision(agent, deltaTime);
+			A->makeDecision(agent, deltaTime); //make this decision
 		}
 		else
 		{
-			B->makeDecision(agent, deltaTime);
+			B->makeDecision(agent, deltaTime); //make this decision
 		}
 	}
 

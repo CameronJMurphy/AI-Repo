@@ -52,23 +52,19 @@ protected:
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
 	
-	//player
-	Agent* m_player; //the player
-	KeyboardBehaviour* m_keyboardBehaviour;
-	//enemy
+	//herd
 	Dinosaur* m_herbivore;
+	aie::Texture* herb;
+	//carn
 	Dinosaur* m_carnivore;
-	DecisionBehaviour* m_Attackdecision; //uses decision tree
+	aie::Texture* carn;
+	//decisions
+	DecisionBehaviour* m_HerbDecision; //uses decision tree
 	DecisionBehaviour* m_CarniDecision; //uses decision tree
+	// terrain
 	Grass* grassPatch;
 	Water* bodyOfWater;
-	aie::Texture* herb;
-	aie::Texture* carn;
-	
-	float timer = 0;
-	float respawnTimer = 10;
-	//Agent* m_enemy; //the enemy
-	//FiniteStateMachine* m_enemyBehaviour;
 
-	
+	float timer = 0;
+	float respawnTimer = 10;	
 };

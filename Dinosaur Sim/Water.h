@@ -5,7 +5,6 @@
 class Water
 {
 public:
-	//Water(vector2 pos) : position(pos) {};
 	vector2 GetPosition() { return position; }
 	void SetPosition(Pathfinding::Node* _pos) { position = vector2(_pos->position.x, _pos->position.y); }
 	void Draw(aie::Renderer2D* r);
@@ -15,6 +14,6 @@ public:
 	}
 private:
 	vector2 position;
-	float waterPerConsume = 100;
+	float waterPerConsume = 100; //how much will drinking this restore thirst
 };
 
